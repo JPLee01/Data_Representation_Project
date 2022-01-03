@@ -74,7 +74,7 @@
             <h1>Electronic Items Viewer</h1>
         </div>
         <div class="navigation">
-            <a href="http://127.0.0.1:5000/index4.html">Homepage</a>
+            <a href="http://127.0.0.1:5000/index.html">Homepage</a>
         </div>
         <div  style="padding:20px">
             <h1 style="color:royalblue">Manage Items</h1>
@@ -84,7 +84,7 @@
             <div id="create-update" style="display:none">
                 <div class="sub-header"></div>
                 <pre></pre>
-                <h2><span style="color:royalblue"id="createLabel">Create a New Item</span></h2>
+                <h2><span style="color:royalblue"id="createLabel">Create a New Item</span><span style="color:royalblue"id="updateLabel">Update an Existing Item</span></h2>
                 <table id="createUpdateForm">
                     <tr>
                                 <b>ID:</b><br/> 
@@ -114,6 +114,9 @@
                 function showCreate(){
                     document.getElementById('display').style.display="none"
                     document.getElementById('create-update').style.display="block"
+
+                    document.getElementById('createLabel').style.display="inline"
+                    document.getElementById('updateLabel').style.display="none"
                 }
 
                 function showDisplay(){
@@ -121,10 +124,26 @@
                     document.getElementById('create-update').style.display="none"
                 }
 
+
                 function doCreate(){
                     console.log("in doCreate")
-                    getItemFromForm()
-                    
+                    item = getItemFromForm()
+                    console.log(item)
+                    $.ajax({
+                        url:"/electronic",
+                        "data":JSON.stringify(item),
+                        "method":"POST",
+                        "dataType":"JSON",
+                        contentType: "application/json; charset=utf-8",
+                        success:function(result){
+                            console.log(result)
+                            addItemToTable(item)
+                            showDisplay()
+                        },
+                        error:function(xhr,status,error){
+                            console.log("error"+error)
+                        }
+                    }) 
                 }
 
                 function getItemFromForm(){
@@ -140,27 +159,12 @@
                 }   
 
                 
-
-                
-
-
-
-
-                function showUpdate(thisElem){
-                    var rowElement = thisElem.parentNode.parentNode;
-                    item = readItemFromRow(rowElement)
-                    populateForm(item)
-                    document.getElementById('display').style.display = "none"
-                    document.getElementById('update-button').style.display = "block"
-                    document.getElementById('create-button').style.display = "none"
-                    document.getElementById('create-update').style.display = "block"
-                }
-
                 function doDelete(thisElem){
                     var tableElement = document.getElementById('itemTable');
                     var rowElement = thisElem.parentNode.parentNode;
                     var index = rowElement.rowIndex;
-                    employee_ID = rowElement.getAttribute("electronic_id");
+                    electronic_id = rowElement.getAttribute("electronic_id");
+                    console.log(electronic_id)
                     $.ajax({
                         url:"/electronic/"+electronic_id,
                         method:"DELETE",
@@ -172,7 +176,47 @@
                          console.log(error)
                         }
                     })   
+                  }
+
+
+                function doUpdate(thisElem){
+                    var rowElement = thisElem.parentNode.parentNode;
+                    item = readItemFromRow(rowElement)
+                    populateForm(item)
+
+                    //electronic_id = rowElement.getAttribute("electronic_id");
+
+                    //document.getElementById("idInput").value = electronic_id
+                    //document.getElementById("idInput").disabled = true
+
+                    document.getElementById('display').style.display="none"
+                    document.getElementById('create-update').style.display="block"
+
+                    document.getElementById('createLabel').style.display="none"
+                    document.getElementById('updateLabel').style.display="inline"
                 }
+
+                function readItemFromRow(rowElement){
+                    item = {}
+                    item.electronic_id = rowElement.getAttribute("electronic_id");
+                    item.electronic_make = rowElement.cells[1].firstChild.textContent
+                    item.electronic_model = rowElement.cells[2].firstChild.textContent
+                    item.electronic_price = rowElement.cells[3].firstChild.textContent
+
+                } 
+
+                function populateForm(item){
+                    var form = document.getElementById('createUpdateForm')
+                    form.querySelector('input[name="electronic_id"]').value = item.electronic_id
+                    form.querySelector('input[name="electronic_id"]').disbled = true
+
+                    form.querySelector('input[name="electronic_make"]').value = item.electronic_make
+                    form.querySelector('input[name="electronic_model"]').value = item.electronic_model
+                    form.querySelector('input[name="electronic_price"]').value = item.electronic_price
+
+                    return book
+                }
+                
                 
                 
   
@@ -209,7 +253,7 @@
                     cell4 = rowElement.insertCell(3)
                     cell4.innerHTML = item.electronic_price
                     cell5 = rowElement.insertCell(4)
-                    cell5.innerHTML = '<button class="button" onclick="showUpdate(this)">Update</button'
+                    cell5.innerHTML = '<button class="button" onclick="doUpdate(this)">Update</button'
                     cell6 = rowElement.insertCell(5)
                     cell6.innerHTML = '<button class="button" onclick="doDelete(this)">Delete</button'
                 }
@@ -220,4 +264,4 @@
             </script>
     </body>
 
-    </html>
+</html>
