@@ -9,17 +9,20 @@ import mysql
 import mysql.connector # pip install mysql-connector
 
 
-# create a class EmployeeDAO to contain all functions
+#Create a class EmployeeDAO to contain all functions
 class ElectronicDAO:
-    db = ""       # variable stores database connection
-    def __init__(self): 
-        self.db = mysql.connector.connect (   # will open a connection to a MySQL server and return a MySQLConnection object.
+    #Variable stores database connection
+    db = ""       
+    def __init__(self):
+        #Will open a connection to a MySQL server and return a MySQLConnection object
+        self.db = mysql.connector.connect (   
             host = 'localhost',
             user = 'root',
             password = '',
             database = 'datarepresentation'
         )
-        #print("Connection made") # check if connection is made / works!
+        #Check if connection is made
+        #print("Connection made") 
 
 
 #Add new item to electronic table (datarepresentation database on mysql)

@@ -1,0 +1,134 @@
+<!-- Data Representation - Project -->
+<!-- John Paul Lee - G00387906 -->
+<!-- Lecturer - Andrew Beatty -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SQL Data</title>
+        <!-- Set the title of the HTML as SQL Data -->
+        <!-- HTML <meta> Tag Code inspired from: https://www.w3schools.com/tags/tag_meta.asp -->
+        <meta name="keywords" content="Study, College, Electronic">
+        <!-- Define keywords for search engines -->
+        <meta name="description" content="Project for Data Representation Module">
+        <!-- Define a description of your web page -->
+        <meta name="author" content="John Paul Lee">
+        <!-- Define the author of the page -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Set the viewport to allow for the webpage to be readable on all devices -->
+        <meta charset="UTF-8" />
+        <!-- Specify the character encoding for the web page as the UTF-8 character set -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <style>
+        /* Setting of styles for the login section of the project */
+
+        /* Setting of styles for the login div */
+        /* Setting of the position to absolute, margin left and right to auto, width, margin-top  and padding to 100px */
+        /* Setting of background to transparent and border-radius to 5px */
+        .login {
+            position: absolute; 
+            left: 0; 
+            right: 0; 
+            margin-left: auto; 
+            margin-right: auto; 
+            width: 100px;
+            margin-top: 100px;
+            padding: 100px 100px;
+            height: auto;
+            background:transparent;
+            border-radius: 5px;
+        }
+        
+        /* Setting of styles for the label div */
+        /* Setting of the position to absolute, margin left and right to auto, width to 100px and padding to 10px*/
+        /* Setting of font weight to bold and font colour to crimson */
+        .label {
+            position: absolute; 
+            left: 0; 
+            right: 0; 
+            margin-left: auto; 
+            margin-right: auto; 
+            width: 100px;
+            padding: 10px 10px;
+            font-size: 35px;
+            font-weight: bold;
+            color: royalblue;
+        }
+        
+        /* Setting of styles for the login-form div */
+        /* Setting of the padding to 80px and 0px */
+        .login-form {
+            padding: 80px 0px;
+        }
+        
+        /* Setting of styles for the font in the login-form div */
+        /* Setting of font size to 18px and font colour to crimson */
+        /* Setting of the padding to 5px and 0px */
+        .login-form .font {
+            font-size: 18px;
+            color: royalblue;
+            margin: 5px 0px;
+        }
+        
+        /* Setting of styles for the input of the the login-form div */
+        /* Setting of the height to 40px and width to 350px */
+        /* Setting of the padding to 0px and 5px */
+        /* Setting of font size to 18px and font colour to crimson. 
+        /* Setting of a border to 1px solid crimson. As well as the addition of a pointer */
+        .login-form input {
+            height: 40px;
+            width: 350px;
+            padding: 0 5px;
+            font-size: 18px;
+            outline: none;
+            border: 1px solid royalblue;
+            cursor: pointer;
+        }
+        
+    </style> 
+    <body>
+        <!-- Creation of login div to handle the users login -->
+        <div class="login">
+            <h1 class="label">Login</h1>
+            <!-- Direct the user to the profile.html page upon successful login -->
+            <form class="login-form" action="http://127.0.0.1:5000/electronic">
+                <!-- Creation of email div to handle the email option within the login form -->
+                <!-- Setting of input type to email to allow for HTML automatic validation. Reference: https://html.form.guide/html5/html5-input-type-email/ -->
+                <!-- Setting of autocomplete to off and value to abc@example.com to hardcode the email/username and remove the autocomplete option -->
+                <!-- Addition of input pattern option to ensure the user inputs a vaild email address i.e. characters followed by an @ sign, followed by more characters, and then a "." -->
+                <!-- This is an additional validation option on top of the input type="email" option incase users browser does not support input type="email" option -->
+                <!-- Insertion of title to prompt the user as to the correct type of input required -->
+                <!-- Below code inpired from: https://www.w3schools.com/tags/att_input_pattern.asp, https://stackoverflow.com/questions/19605773/html5-email-validation, https://www.htmlquick.com/reference/tags/input-email.html and https://html5-tutorial.net/form-validation/validating-email/ -->
+                <div class="email">Email</div>
+                <input type="email" placeholder="Enter Email" name="email" autocomplete="off" 
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                title="Must contain at least one character, followed by the @ sign, then at least one character followed by . followed by at least 2 letters from a to z."
+                required>
+                
+                <!-- Creation of password div to handle the password option within the login form -->
+                <!-- Setting of input type to password to allow for HTML automatic validation. Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password -->
+                <!-- Setting of autocomplete to off and value to 123Password to hardcode the password and remove the autocomplete option -->
+                <!-- Addition of input pattern option to ensure the user inputs a password i.e. at least one number and one uppercase and lowercase letter, and at least 8 or more characters -->
+                <!-- This is an additional validation option on top of the input type="password" option incase users browser does not support input type="password" option -->
+                <!-- Insertion of title to prompt the user as to the correct type of input required -->
+                <!-- Below code inpired from: https://www.w3schools.com/tags/att_input_pattern.asp, https://www.w3schools.com/tags/att_input_type_password.asp, https://www.tutorialspoint.com/How-do-we-take-password-input-in-HTML-forms and https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a -->
+                <div class="password">Password</div>
+                <input type="password" id="password" placeholder="Enter Password" 
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
+                <!-- Addition of Submit button to submit the users login details -->
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>
+
+
+
+    </body>    
+
+</html>

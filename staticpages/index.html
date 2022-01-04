@@ -1,7 +1,24 @@
+<!-- Data Representation - Project -->
+<!-- John Paul Lee - G00387906 -->
+<!-- Lecturer - Andrew Beatty -->
+<!-- Code is adapted from code generated through lectures through the semester -->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Electronic Items Viewer</title>
+        <!-- Set the title of the HTML as Electronic Items Viewer -->
+        <!-- HTML <meta> Tag Code inspired from: https://www.w3schools.com/tags/tag_meta.asp -->
+        <meta name="keywords" content="Study, College, Electronic">
+        <!-- Define keywords for search engines -->
+        <meta name="description" content="Project for Data Representation Module">
+        <!-- Define a description of your web page -->
+        <meta name="author" content="John Paul Lee">
+        <!-- Define the author of the page -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Set the viewport to allow for the webpage to be readable on all devices -->
+        <meta charset="UTF-8" />
+        <!-- Specify the character encoding for the web page as the UTF-8 character set -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -9,7 +26,7 @@
     </head>
     <style>
             /* Set the font family */
-        body{
+        .body{
             font-family: Arial, Helvetica, sans-serif;
             margin:0;
             }
@@ -19,12 +36,15 @@
             text-align: center;
             background:royalblue;
             color: white;
+            font-size: large;
             }
         .sub-header{
-            /*Define the styling for the header class*/
-            padding: 20px;
-            text-align: left;
-            color: royalblue;  
+            /*Define the styling for the sub-header class*/
+            padding: 10px;
+            text-align: center;
+            color: royalblue;
+            text-decoration: underline; 
+            font-size: medium;
             }
         .navigation{
             /*hide over flow, and pick colour*/
@@ -68,13 +88,14 @@
             border-color: royalblue;
             } 
     </style>
-    <body>
+    <body class="body">
         <!--Use a div to define a header - this will be styled using CSS (.header)-->
         <div class="header">
             <h1>Electronic Items Viewer</h1>
         </div>
         <div class="navigation">
             <a href="http://127.0.0.1:5000/index.html">Homepage</a>
+            <a href="http://127.0.0.1:5000/login.html" target="_blank">View Raw SQL Data</a>
         </div>
         <div  style="padding:20px">
             <h1 style="color:royalblue">Manage Items</h1>
@@ -82,7 +103,6 @@
         <div>
             <!-- Hello, World!! --> <!-- works-->
             <div id="create-update" style="display:none">
-                <div class="sub-header"></div>
                 <pre></pre>
                 <h2><span style="color:royalblue"id="createLabel">Create a New Item</span><span style="color:royalblue"id="updateLabel">Update an Existing Item</span></h2>
                 <div id="createUpdateForm">
@@ -95,7 +115,9 @@
             </div>
             <pre></pre>
             <div id="display">
-                    <h2 style="color:royalblue">Electronic Items</h2>
+                <div class="sub-header">
+                    <h2>Electronic Items</h2>
+                </div>
                     <pre></pre>
                 <table id="itemTable" class="table">
                     <tr>
