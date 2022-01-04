@@ -10,9 +10,13 @@ from flask import Flask, url_for, request, redirect, abort, jsonify
 
 app = Flask(__name__, static_url_path='', static_folder='staticpages')
 
-@app.route('/')
-def index():
-   return  "Welcome. The server is working" # Server is working!
+
+#@app.route('/')
+#def index():
+    # Return message to shoe the server is working
+    # return  "Welcome. The server is working" 
+
+    
 
 # getAll 
 # curl http://127.0.0.1:5000/electronic
