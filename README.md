@@ -49,11 +49,11 @@ located [here](https://github.com/JPLee01/Data_Representation_Project):
   index.html |  HTML that uses AJAX to link to the server and provide a user interface for the Electronic database 
   initdb.sql | SQL code to create the database, create the tables and populate the tables
   LICENSE     |    MIT License for the project
-  login.html | Extra page in which the user can view a the SQL data in raw form. (Please note login is required. Email = Must contain at least one character, followed by the @ sign, then at least one character followed by . followed by at least 2 letters from a to z, e.g. abc@example.com. Password = Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters, e.g. 123Password)
+  login.html | Extra page in which the user can view a the SQL data in raw form. (Please note login is required. Email = Must contain at least one character, followed by the @ sign, then at least one character followed by . followed by at least 2 letters from a to z, e.g. abc@example.com. Password = Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters, e.g.)
   Project Description.pdf | A PDF copy of the Poject Description and Instructions
   README.md   |    This file; A Description of the project and instructions
-  Server.py |  Flask server that implements a REST API that performs CRUD operations
   requirements.txt | List of necessary packages 
+  Server.py |  Flask server that implements a REST API that performs CRUD operations
   Test_ElectronicDAO.py | DAO Pattern - Test CRUD operations for Electronic
   database
                                           

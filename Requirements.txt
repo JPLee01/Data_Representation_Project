@@ -1,3 +1,7 @@
+#Data Representation - Project
+#John Paul Lee - G00387906
+#Lecturer - Andrew Beatty
+#List of necessary packages
 appnope==0.1.0
 astroid==2.3.3
 astropy==4.0.1.post1
