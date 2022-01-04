@@ -7,7 +7,7 @@
 
 from ElectronicDAO import electronicDAO
 
-#print("ok!") # print ok to see if everything works / and it works!
+#print("ok!") # print ok to see if everything works
 
 item1 = {
     'electronic_make':'Apple', 
@@ -27,12 +27,17 @@ item3 = {
     'electronic_price': 550
 }
 
+#Testing out of electronicDAO functions
 
 #returnValue = electronicDAO.create(item1)
+#print("------------------------------------------------------------------------------------------------------------------------")
 #print(returnValue)
+#print("------------------------------------------------------------------------------------------------------------------------")
 
 #returnValue = electronicDAO.getAll()
+#print("------------------------------------------------------------------------------------------------------------------------")
 #print(returnValue)
+#print("------------------------------------------------------------------------------------------------------------------------")
 
 
 

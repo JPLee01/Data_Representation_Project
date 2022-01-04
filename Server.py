@@ -38,10 +38,11 @@ def findById(electronic_id):
 
 @app.route('/electronic', methods=['POST']) # works
 def create(): 
-    if not request.json: #abort the request if it is not in the correct json format
+    if not request.json: 
+        #Abort the request if it is not in the correct json format
         print("WRONG!")
         abort(400)
-    # if it is correct request do this
+    #If it is correct request do this
     item = { 
         "electronic_make": request.json["electronic_make"],
         "electronic_model": request.json["electronic_model"],

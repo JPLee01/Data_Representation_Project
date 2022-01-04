@@ -6,7 +6,7 @@
 #Import required modules
 
 import mysql
-import mysql.connector # pip install mysql-connector
+import mysql.connector
 
 
 #Create a class EmployeeDAO to contain all functions
@@ -28,7 +28,6 @@ class ElectronicDAO:
 #Add new item to electronic table (datarepresentation database on mysql)
     def create(self, electronic):
         cursor = self.db.cursor()
-        #"insert into rooms (name, colour) values (%s,%s)"
         sql = "Insert into electronic (electronic_make, electronic_model, electronic_price) values (%s,%s,%s)"
         values = [
             electronic['electronic_make'],
@@ -46,7 +45,6 @@ class ElectronicDAO:
         cursor.execute(sql)
         results = cursor.fetchall()
         returnArray = []
-        # print(results) / # works
         for result in results:
             resultAsDict = self.convertToDict(result)
             returnArray.append(resultAsDict)
@@ -86,7 +84,6 @@ class ElectronicDAO:
         self.db.commit()
         cursor.close()   
         return {} 
-
 
 
 #Convert a list to dictionary
