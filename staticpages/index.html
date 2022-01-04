@@ -85,20 +85,13 @@
                 <div class="sub-header"></div>
                 <pre></pre>
                 <h2><span style="color:royalblue"id="createLabel">Create a New Item</span><span style="color:royalblue"id="updateLabel">Update an Existing Item</span></h2>
-                <table id="createUpdateForm">
-                    <tr>
-                                <b>ID:</b><br/> 
-                            <input type="number" name="electronic_id" id="idInput"> <br/>
-                                <b>Make:</b><br/> 
-                            <input type="text" name="electronic_make"/> <br/>
-                                <b>Model:</b><br/> 
-                            <input type="text" name="electronic_model"> <br/>
-                                <b>Price:</b><br/> 
-                            <input type="currency" name="electronic_price"/> <br/>
-                                <br/>
-                            <span><button id="doCreateButton" class="button" onclick="doCreate()">Create</button></span>
-                    </tr>
-                </table>
+                <div id="createUpdateForm">
+                        <input type="hidden" name="electronic_id" id="idInput"/>
+                        Make <input type="text" name="electronic_make"  id="makeInput"/></br>
+                        Model <input type="text" name="electronic_model" id="modelInput"/> </br>
+                        Price <input type="number" name="electronic_price" id="priceInput"/> </br>
+                        <span><button id="doCreateButton" class="button" onclick="doCreate()">Create</button></span>
+                </div>
             </div>
             <pre></pre>
             <div id="display">
@@ -126,16 +119,16 @@
 
 
                 function doCreate(){
-                    console.log("in doCreate")
+                    //console.log("in doCreate")
                     item = getItemFromForm()
                     console.log(item)
                     $.ajax({
-                        url:"/electronic",
-                        "data":JSON.stringify(item),
+                        "url":"/electronic",
                         "method":"POST",
+                        "data":JSON.stringify(item),
                         "dataType":"JSON",
                         contentType: "application/json; charset=utf-8",
-                        success:function(result){
+                        "success":function(result){
                             console.log(result)
                             addItemToTable(item)
                             showDisplay()
@@ -152,7 +145,7 @@
                     item.electronic_id = form.querySelector('input[name="electronic_id"]').value
                     item.electronic_make = form.querySelector('input[name="electronic_make"]').value
                     item.electronic_model = form.querySelector('input[name="electronic_model"]').value
-                    item.electronic_price = form.querySelector('input[name="electronic_price"]').value
+                    item.electronic_price = parseInt(form.querySelector('input[name="electronic_price"]').value,10)
                     console.log(item)
                     console.log(JSON.stringify(item))
                     return item
@@ -207,20 +200,29 @@
 
                 function populateForm(item){
                     var form = document.getElementById('createUpdateForm')
-                    form.querySelector('input[name="electronic_id"]').value = item.electronic_id
-                    form.querySelector('input[name="electronic_id"]').disbled = true
+                    
+                    electronic_id = document.getElementById("idInput").value
+                    document.getElementById("idInput").disabled = true
 
-                    form.querySelector('input[name="electronic_make"]').value = item.electronic_make
-                    form.querySelector('input[name="electronic_model"]').value = item.electronic_model
-                    form.querySelector('input[name="electronic_price"]').value = item.electronic_price
+                    //form.querySelector('input[name="electronic_id"]').disbled = true
 
-                    return book
+                    //form.querySelector('input[name="electronic_id"]').value = item.electronic_id
+                    
+                    electronic_id = document.getElementById("idInput").value
+                    electronic_make = document.getElementById("makeInput").value
+                    electronic_model = document.getElementById("modelInput").value
+                    electronic_price = document.getElementById("priceInput").value
+                    
+                    //form.querySelector('input[name="electronic_make"]').value = item.electronic_make
+                    //form.querySelector('input[name="electronic_model"]').value = item.electronic_model
+                    //form.querySelector('input[name="electronic_price"]').value = item.electronic_price
+              
+                    return item
                 }
                 
                 
                 
-  
-                
+              
                 
 
                 function populateTable(){
