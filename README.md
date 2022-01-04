@@ -100,4 +100,3 @@ Once the repository has been downloaded, you will need to ensure that you are ru
 5. Type the following link into your browser: <http://127.0.0.1:5000/index.html> (assuming you are using the local host to serve the website).
 6. Perform CRUD (Create, Read, Update and Delete) operations on the Electronic table.
 
-
